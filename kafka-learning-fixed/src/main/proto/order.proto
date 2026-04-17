@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package kafkalearn;
+
+option java_package = "com.kafkalearn.model";
+option java_outer_classname = "OrderProto";
+
+// =========================================================
+// УРОК 3: Proto-файл — схема сообщения
+//
+// Protobuf — бинарный формат сериализации от Google.
+// Преимущества перед JSON:
+//   - В ~3-10 раз меньше размер
+//   - Быстрее сериализация/десериализация
+//   - Строгая схема (нет опечаток в полях)
+//   - Версионируемость (можно добавлять поля без breaking change)
+//
+// Каждое поле имеет уникальный номер (field tag).
+// НИКОГДА не меняй номера существующих полей!
+// =========================================================
+
+message Order {
+    string order_id     = 1;  // уникальный ID заказа
+    string customer_id  = 2;  // ID клиента
+    string product_name = 3;  // название продукта
+    double amount       = 4;  // сумма заказа
+    OrderStatus status  = 5;  // статус
+    int64 timestamp_ms  = 6;  // время создания (Unix millis)
+}
+
+// Enum — перечисление возможных статусов
+enum OrderStatus {
+    ORDER_STATUS_UNKNOWN  = 0;  // всегда должен быть 0 как default
+    ORDER_STATUS_CREATED  = 1;
+    ORDER_STATUS_PAID     = 2;
+    ORDER_STATUS_SHIPPED  = 3;
+    ORDER_STATUS_DELIVERED = 4;
+    ORDER_STATUS_CANCELLED = 5;
+}
