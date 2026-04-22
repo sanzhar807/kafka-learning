@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Protobuf сериализация" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-04-22T10:30:29" hostname="LAPTOP-8K5LAQ4A" time="0.167">
+  <properties/>
+  <testcase name="[1] ORDER_STATUS_UNKNOWN" classname="com.kafkalearn.ProtoSerializationTest" time="0.12"/>
+  <testcase name="[2] ORDER_STATUS_CREATED" classname="com.kafkalearn.ProtoSerializationTest" time="0.005"/>
+  <testcase name="[3] ORDER_STATUS_PAID" classname="com.kafkalearn.ProtoSerializationTest" time="0.002"/>
+  <testcase name="[4] ORDER_STATUS_SHIPPED" classname="com.kafkalearn.ProtoSerializationTest" time="0.004"/>
+  <testcase name="[5] ORDER_STATUS_DELIVERED" classname="com.kafkalearn.ProtoSerializationTest" time="0.003"/>
+  <testcase name="[6] ORDER_STATUS_CANCELLED" classname="com.kafkalearn.ProtoSerializationTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

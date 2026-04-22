@@ -42,8 +42,8 @@ public class OrderFactory {
                 createOrder("customer-001", "Ноутбук Dell XPS", 1299.99),
                 createOrder("customer-002", "iPhone 15 Pro",   999.00),
                 createOrder("customer-003", "Наушники Sony",   349.50),
-                createOrder("customer-001", "Мышь Logitech",   79.99),
-                createOrder("customer-004", "Монитор LG 4K",   699.00),
+                createOrder("customer-004", "Мышь Logitech",   79.99),
+                createOrder("customer-005", "Монитор LG 4K",   699.00),
         };
     }
 }

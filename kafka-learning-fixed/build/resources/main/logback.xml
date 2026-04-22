@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Уменьшаем шум от самой Kafka -->
+    <logger name="org.apache.kafka" level="WARN"/>
+    <logger name="kafka" level="WARN"/>
+
+    <!-- Наш код — INFO -->
+    <logger name="com.kafkalearn" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

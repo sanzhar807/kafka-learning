@@ -6,6 +6,8 @@ import com.kafkalearn.model.OrderProto.OrderStatus;
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -82,5 +84,27 @@ class ProtoSerializationTest {
 
         // Protobuf не может десериализовать мусор — именно это ловит наш consumer
         assertThrows(InvalidProtocolBufferException.class, () -> Order.parseFrom(garbage));
+    }
+
+    @Test
+    @DisplayName("timesatap test")
+    void timestampTest(){
+        Order order = OrderFactory.createOrder("customer-1","product", 50.0);
+
+        long timestamp = order.getTimestampMs();
+
+        assertTrue(order.getAmount() > 0);
+        assertTrue(timestamp > 0);
+    }
+
+    @ParameterizedTest
+    @EnumSource(value = OrderStatus.class, mode = EnumSource.Mode.EXCLUDE , names = "UNRECOGNIZED")
+    void allStatusSerializeCorrectly(OrderStatus status) throws InvalidProtocolBufferException {
+        Order order = OrderFactory.createOrder("customer-1","product",20.0);
+        Order withStatus = OrderFactory.withStatus(order,status);
+        byte[] bytes = withStatus.toByteArray();
+        Order result = Order.parseFrom(bytes);
+
+        assertEquals(status , result.getStatus());
     }
 }
